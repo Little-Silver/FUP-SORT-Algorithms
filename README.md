@@ -13,3 +13,8 @@
 ### Option #3
 
 - The clock package ([Source](https://chrisdone.com/posts/measuring-duration-in-haskell/))
+
+## Random
+
+- `stack update`
+- `stack --resolver=lts install random`
