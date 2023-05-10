@@ -20,3 +20,17 @@ ssort xs = let { x = minimum xs }
 --------------------------------------------------------------------------------------------
 -- Selection sort -- Version 2 ----------------------------------------------------------------
 --------------------------------------------------------------------------------------------
+
+
+-- ghci> bsort1 list2
+run f l fname = do
+    start <- getCurrentTime
+    evaluate (f l)
+    end <- getCurrentTime
+    print ((++) fname  ": ")
+    print (diffUTCTime end start)
+
+
+main = do
+    run ssort list1 "ssort"
+    run ssort list1 "ssort"

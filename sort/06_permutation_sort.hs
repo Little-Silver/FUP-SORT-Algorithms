@@ -20,3 +20,15 @@ psort = head . filter sorted . permutations
 --------------------------------------------------------------------------------------------
 -- Permutation sort -- Version 2 ----------------------------------------------------------------
 --------------------------------------------------------------------------------------------
+
+run f l fname = do
+    start <- getCurrentTime
+    evaluate (f l)
+    end <- getCurrentTime
+    print ((++) fname  ": ")
+    print (diffUTCTime end start)
+
+
+main = do
+    run psort list1 "psort"
+    run psort list1 "psort"

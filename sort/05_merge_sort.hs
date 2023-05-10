@@ -26,3 +26,15 @@ msort xs = go [[x] | x <- xs]
 --------------------------------------------------------------------------------------------
 -- Merge sort -- Version 2 ----------------------------------------------------------------
 --------------------------------------------------------------------------------------------
+
+run f l fname = do
+    start <- getCurrentTime
+    evaluate (f l)
+    end <- getCurrentTime
+    print ((++) fname  ": ")
+    print (diffUTCTime end start)
+
+
+main = do
+    run msort list1 "msort"
+    run msort list1 "msort"

@@ -18,3 +18,15 @@ qsort (x:xs) = qsort [a | a <- xs, a < x]
 --------------------------------------------------------------------------------------------
 -- Quick sort -- Version 2 ----------------------------------------------------------------
 --------------------------------------------------------------------------------------------
+
+run f l fname = do
+    start <- getCurrentTime
+    evaluate (f l)
+    end <- getCurrentTime
+    print ((++) fname  ": ")
+    print (diffUTCTime end start)
+
+
+main = do
+    run qsort list1 "qsort"
+    run qsort list1 "qsort"

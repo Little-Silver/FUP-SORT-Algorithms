@@ -5,7 +5,7 @@ import System.Random
 randomIntList :: Int -> Int -> Int -> [Int]
 randomIntList n minVal maxVal = take n $ randomRs (minVal, maxVal) (mkStdGen 42)
 
-list1 = randomIntList 500 0 100
+list1 = randomIntList 2000 0 1000
 --------------------------------------------------------------------------------------------
 -- Bubble sort -- Version 1 ----------------------------------------------------------------
 --------------------------------------------------------------------------------------------
@@ -37,3 +37,14 @@ bubblePass (x1 : x2 : xs)
   | otherwise = x1 : bubblePass (x2 : xs)
 
 -- ghci> bsort1 list2
+run f l fname = do
+    start <- getCurrentTime
+    evaluate (f l)
+    end <- getCurrentTime
+    print ((++) fname  ": ")
+    print (diffUTCTime end start)
+
+
+main = do
+    run bsort1 list1 "bsort1"
+    run bsort2 list1 "bsort2"

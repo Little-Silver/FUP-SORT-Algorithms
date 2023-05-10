@@ -5,7 +5,7 @@ import System.Random
 randomIntList :: Int -> Int -> Int -> [Int]
 randomIntList n minVal maxVal = take n $ randomRs (minVal, maxVal) (mkStdGen 42)
 
-list1 = randomIntList 5000 0 100
+list1 = randomIntList 500 0 100
 --------------------------------------------------------------------------------------------
 -- Binary Tree sort -- Version 1 ----------------------------------------------------------------
 --------------------------------------------------------------------------------------------
@@ -38,3 +38,16 @@ treeSort = inorder . addList Empty
 --------------------------------------------------------------------------------------------
 -- Binary Tree -- Version 2 ----------------------------------------------------------------
 --------------------------------------------------------------------------------------------
+
+
+run f l fname = do
+    start <- getCurrentTime
+    evaluate (f l)
+    end <- getCurrentTime
+    print ((++) fname  ": ")
+    print (diffUTCTime end start)
+
+
+main = do
+    run treeSort list1 "treeSort"
+    run treeSort list1 "treeSort"

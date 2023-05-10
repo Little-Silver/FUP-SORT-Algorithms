@@ -23,3 +23,16 @@ isort (x:xs) = insert x (isort xs)
 --------------------------------------------------------------------------------------------
 -- Insertion sort -- Version 2 ----------------------------------------------------------------
 --------------------------------------------------------------------------------------------
+
+-- ghci> bsort1 list2
+run f l fname = do
+    start <- getCurrentTime
+    evaluate (f l)
+    end <- getCurrentTime
+    print ((++) fname  ": ")
+    print (diffUTCTime end start)
+
+
+main = do
+    run isort list1 "isort"
+    run isort list1 "isort"
