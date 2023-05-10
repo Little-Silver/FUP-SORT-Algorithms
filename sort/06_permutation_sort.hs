@@ -6,7 +6,9 @@ import Data.List (permutations)
 randomIntList :: Int -> Int -> Int -> [Int]
 randomIntList n minVal maxVal = take n $ randomRs (minVal, maxVal) (mkStdGen 42)
 
-list1 = randomIntList 5000 0 100
+list1 = randomIntList 20 0 10
+list2 = reverse [0..100]
+list3 = [0..100]
 --------------------------------------------------------------------------------------------
 -- Permutation sort -- Version 1 ----------------------------------------------------------------
 --------------------------------------------------------------------------------------------
