@@ -27,6 +27,8 @@ list100 = reverse [0..100000]
 
 
 --Merge sort
+---------------------------------------------------------------------
+
 merge :: Ord a => [a] -> [a] -> [a]
 merge xs [] = xs
 merge [] ys = ys
@@ -44,8 +46,6 @@ go xs = go (pairs xs)
 --Bottom-up version:
 msort [] = []
 msort xs = go (map (\x -> [x]) xs)
---ghci> msort list_test
---[1,2,3,4,5,6,9,10,11,13]
     
 --Top-down version:
 my_split :: [a] -> ([a], [a])
@@ -66,30 +66,15 @@ msort2 xs = merge (msort2 firstHalf) (msort2 secondHalf)
 {-
 merge:
 If xs or ys is an empty list, the function returns the non-empty list.
-If xs and ys have elements, the function compares the first elements (x and y).
+If xs and ys have elements, the function compares the first elements.
 x <= y -> add x to the result and recursively merges the remaining elements of xs with the entire ys list.
 else -> add y to the result and recursively merges xs with the remaining elements of ys.
 
 pairs:
-It takes a list of lists t as input and merges adjacent pairs of sublists
-until only one list remains. 
+It takes a list of lists as input and merges adjacent pairs of sublists until only one list remains. 
 
 go:
-The actual merge sort.
-It takes a list of lists xs as input and recursively merges adjacent pairs of lists
-until a single sorted list remains.
-map (\x -> [x]) xs -> wraps each element x in list of singleton lists.
-xs = [3, 1, 4, 2] -> [[3], [1], [4], [2]]
-
-Bottom-up approach:
-Reduced number of recursive calls.
-Reduced memory usage: The bottom-up approach avoids creating multiple sublists.
-
-Top-down approach:
-By using a top-down approach, the merge sort algorithm recursively divides
-the list into smaller halves until it reaches the base case of a single element
-or an empty list. Then, it merges the sorted halves back together to produce the
-final sorted list.
+The go function takes a list of lists xs as input and recursively merges adjacent pairs of lists until one single sorted list remains.
 -}
 
 run f l fname = do

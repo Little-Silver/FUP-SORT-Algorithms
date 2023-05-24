@@ -28,7 +28,9 @@ list100 = reverse [0..100000]
 list500k = reverse [0..500000]
 
 --Binary Tree Sort
--- Binary Search Tree Datatype (Belongs to BTsort along with add, addList and inorder)
+---------------------------------------------------------------------
+
+-- Binary Search Tree Datatype
 data Tree a = Node a (Tree a) (Tree a) | Empty 
 
 -- add an Element to the Tree
@@ -53,34 +55,15 @@ treeSort = inorder . addList Empty
 
 
 {-
-The Tree type has two constructors:
-Node, which represents a node in the tree with a value and two child trees, and Empty,
-which represents an empty tree.
-
 add:
-If the tree is empty, a new Node is created with the given element as the value, and two empty child trees.
-If the tree is a Node, the function compares the given element (n) with the value of the current node (v).
-n < v -> recursively calls add on the left child tree (l)
-else -> recursively calls add on the right child tree (r)
-The implementation ensures that the resulting tree maintains the binary search tree property,
-where all elements in the left subtree are less than the value of the current node,
+All elements in the left subtree are less than the value of the current node,
 and all elements in the right subtree are greater than or equal to the value of the current node.
 
 addList:
-By applying foldr add to the list of elements, the addList function effectively adds each element
-from the list to the binary search tree. The result is a new binary search tree that contains
-all the elements from the input list.
+The addList function takes a list of elements and adds them to an initially empty binary search tree. 
 
 inorder:
-By recursively traversing the left subtree, processing the current node,
-and then traversing the right subtree,
-the inorder function generates a list of elements in the binary search tree in ascending order.
-
-treeSort:
-Composing inorder . addList Empty
-addList Empty takes a list of elements and adds them to an initially empty binary search tree. 
 The inorder function generates an inorder traversal of the tree, which returns a list of elements in ascending order.
-The list is initially being added to an empty tree, and each element is inserted into the tree using the add function.
 -}
 
 run f l fname = do
@@ -101,6 +84,8 @@ main = do
     run treeSort list100 "treeSort_reverse100'000 ------------"
     run treeSort list500k "treeSort_reverse500'000 ------------"
     run treeSort list7 "treeSort_random1'000'000 ------------"
+
+
 {-
 ghci> main
 "treeSort_random500 ------------: "
