@@ -72,6 +72,9 @@ my_psort :: Ord a => [a] -> [a]
 my_psort = unwrapMaybe . fhead . my_filter sorted . my_perms
 --ghci> my_psort list2
 --Just [1,2,3,4,5,6,9,10,11,13]
+--ghci> my_psort list2
+--[95,95,208,466,500,535,560,651,663,783,913]
+
 
 {-
 The 'permutations' function returns the list of all permutations of the argument.
@@ -123,7 +126,8 @@ element = xs !! 2
 ->  element at index 2 -> 3
 -}
 
-
+--[1, 2, 3, 4, 5]
+--[1, 1, 2, 2, 3]
 randomPermutation :: [a] -> IO [a]
 randomPermutation xs = do
   gen <- newStdGen

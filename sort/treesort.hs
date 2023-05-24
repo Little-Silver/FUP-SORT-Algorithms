@@ -20,11 +20,12 @@ list3 = randomIntList 500 0 1000
 list4 = randomIntList 1000 0 1000
 list5 = randomIntList 10000 0 10000
 list6 = randomIntList 100000 0 100000
+list7 = randomIntList 1000000 0 100000
 list500 = reverse [0..500]
 list1000 = reverse [0..1000]
 list10000 = reverse [0..10000]
 list100 = reverse [0..100000]
-
+list500k = reverse [0..500000]
 
 --Binary Tree Sort
 -- Binary Search Tree Datatype (Belongs to BTsort along with add, addList and inorder)
@@ -73,7 +74,7 @@ all the elements from the input list.
 inorder:
 By recursively traversing the left subtree, processing the current node,
 and then traversing the right subtree,
-the inorder function effectively generates a list of elements in the binary search tree in ascending order.
+the inorder function generates a list of elements in the binary search tree in ascending order.
 
 treeSort:
 Composing inorder . addList Empty
@@ -98,9 +99,26 @@ main = do
     run treeSort list10000 "treeSort_reverse10'000 ------------"
     run treeSort list6 "treeSort_random100'000 ------------"
     run treeSort list100 "treeSort_reverse100'000 ------------"
-
+    run treeSort list500k "treeSort_reverse500'000 ------------"
+    run treeSort list7 "treeSort_random1'000'000 ------------"
 {-
-
+ghci> main
+"treeSort_random500 ------------: "
+0.0010145s
+"treeSort_reverse500 ------------: "
+0s
+"treeSort_random1000 ------------: "
+0s
+"treeSort_reverse1000 ------------: "
+0s
+"treeSort_random10'000 ------------: "
+0.0123574s
+"treeSort_reverse10'000 ------------: "
+0.0049986s
+"treeSort_random100'000 ------------: "
+0.1450015s
+"treeSort_reverse100'000 ------------: "
+0.1117363s
 -}
 
 
