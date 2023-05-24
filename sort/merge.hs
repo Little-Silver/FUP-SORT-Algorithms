@@ -34,6 +34,7 @@ merge xs [] = xs
 merge [] ys = ys
 merge (x:xs) (y:ys) | x <= y    = x:merge xs (y:ys)
                     | otherwise = y:merge (x:xs) ys
+--ghci> merge [1,2,3] [4,5] -> [1,2,3,4,5]
 
 pairs :: Ord a => [[a]] -> [[a]]
 pairs (a:b:t) = merge a b : pairs t
@@ -65,10 +66,7 @@ msort2 xs = merge (msort2 firstHalf) (msort2 secondHalf)
 
 {-
 merge:
-If xs or ys is an empty list, the function returns the non-empty list.
-If xs and ys have elements, the function compares the first elements.
-x <= y -> add x to the result and recursively merges the remaining elements of xs with the entire ys list.
-else -> add y to the result and recursively merges xs with the remaining elements of ys.
+The merge function merges two lists into a single list.
 
 pairs:
 It takes a list of lists as input and merges adjacent pairs of sublists until only one list remains. 
